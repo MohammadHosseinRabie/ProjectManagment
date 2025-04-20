@@ -1,13 +1,12 @@
 "use client";
 
+import { Navbar } from "@/components/layout/navbar";
+import { Sidebar } from "@/components/layout/sidebar";
+import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Profile from "./features/profile/page";
-import { Flex } from "@chakra-ui/react";
-import { Sidebar } from "@/components/layout/sidebar";
-import { Navbar } from "@/components/layout/navbar";
 
-export default function Home() {
+export default function Layout({ children }) {
   const router = useRouter();
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("authToken");
@@ -19,7 +18,7 @@ export default function Home() {
       <Sidebar />
       <Flex direction="column" flex="1">
         <Navbar />
-        <Profile />
+        {children}
       </Flex>
     </Flex>
   );
