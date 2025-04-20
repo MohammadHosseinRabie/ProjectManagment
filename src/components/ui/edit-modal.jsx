@@ -21,6 +21,7 @@ export const EditModal = ({ project }) => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -46,6 +47,7 @@ export const EditModal = ({ project }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["projects"]);
+      reset();
     },
   });
 

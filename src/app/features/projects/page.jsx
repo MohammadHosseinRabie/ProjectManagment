@@ -45,72 +45,80 @@ const Projects = () => {
       <HStack justifyContent={"space-between"} w={"full"}>
         <Text textStyle={"4xl"}>پروژه ها</Text>
         <Box>
-          <AddModal Projects={data.project} />
+          <AddModal />
         </Box>
       </HStack>
-      <Table.Root size="sm" interactive>
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeader w={"auto"}>ردیف</Table.ColumnHeader>
-            <Table.ColumnHeader>پروژه ها</Table.ColumnHeader>
-            <Table.ColumnHeader>توضیحات</Table.ColumnHeader>
-            <Table.ColumnHeader>قیمت</Table.ColumnHeader>
-            <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
-            <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {data?.data?.map((project, index) => (
-            <Table.Row key={project.id}>
-              <Table.Cell>{(page - 1) * 10 + index + 1}</Table.Cell>
-              <Table.Cell>{project.title}</Table.Cell>
-              <Table.Cell>{project.description}</Table.Cell>
-              <Table.Cell>{project.price}</Table.Cell>
-              <Table.Cell textAlign={"left"}>
-                <IconButton
-                  variant={"ghost"}
-                  onClick={() => mutate(project.id)}
-                >
-                  <LuTrash />
-                </IconButton>
-              </Table.Cell>
-              <Table.Cell>
-                <EditModal project={project} />
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table.Root>
-      <HStack justify={"center"} align={"center"}>
-        <Pagination.Root
-          count={100}
-          pageSize={10}
-          page={page}
-          onPageChange={(e) => setPage(e.page)}
-        >
-          <ButtonGroup variant="ghost" size="sm">
-            <Pagination.PrevTrigger asChild>
-              <IconButton>
-                <HiChevronLeft />
-              </IconButton>
-            </Pagination.PrevTrigger>
+      {data?.data?.length === 0 ? (
+        <Box>
+          <Text>هیچ پروژه ای برای نمایش وجود ندارد!</Text>
+        </Box>
+      ) : (
+        <>
+          <Table.Root size="sm" interactive>
+            <Table.Header>
+              <Table.Row>
+                <Table.ColumnHeader w={"auto"}>ردیف</Table.ColumnHeader>
+                <Table.ColumnHeader>پروژه ها</Table.ColumnHeader>
+                <Table.ColumnHeader>توضیحات</Table.ColumnHeader>
+                <Table.ColumnHeader>قیمت</Table.ColumnHeader>
+                <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
+                <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {data?.data?.map((project, index) => (
+                <Table.Row key={project.id}>
+                  <Table.Cell>{(page - 1) * 10 + index + 1}</Table.Cell>
+                  <Table.Cell>{project.title}</Table.Cell>
+                  <Table.Cell>{project.description}</Table.Cell>
+                  <Table.Cell>{project.price}</Table.Cell>
+                  <Table.Cell textAlign={"left"}>
+                    <IconButton
+                      variant={"ghost"}
+                      onClick={() => mutate(project.id)}
+                    >
+                      <LuTrash />
+                    </IconButton>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <EditModal project={project} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table.Root>
+          <HStack justify={"center"} align={"center"}>
+            <Pagination.Root
+              count={100}
+              pageSize={10}
+              page={page}
+              onPageChange={(e) => setPage(e.page)}
+            >
+              <ButtonGroup variant="ghost" size="sm">
+                <Pagination.PrevTrigger asChild>
+                  <IconButton>
+                    <HiChevronLeft />
+                  </IconButton>
+                </Pagination.PrevTrigger>
 
-            <Pagination.Items
-              render={(page) => (
-                <IconButton variant={{ base: "ghost", _selected: "solid" }}>
-                  {page.value}
-                </IconButton>
-              )}
-            />
+                <Pagination.Items
+                  render={(page) => (
+                    <IconButton variant={{ base: "ghost", _selected: "solid" }}>
+                      {page.value}
+                    </IconButton>
+                  )}
+                />
 
-            <Pagination.NextTrigger asChild>
-              <IconButton>
-                <HiChevronRight />
-              </IconButton>
-            </Pagination.NextTrigger>
-          </ButtonGroup>
-        </Pagination.Root>
-      </HStack>
+                <Pagination.NextTrigger asChild>
+                  <IconButton>
+                    <HiChevronRight />
+                  </IconButton>
+                </Pagination.NextTrigger>
+              </ButtonGroup>
+            </Pagination.Root>
+          </HStack>
+        </>
+      )}
     </Stack>
   );
 };
