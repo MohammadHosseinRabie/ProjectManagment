@@ -3,22 +3,23 @@
 import addNewProject from "@/hooks/use-add-project";
 import { Button, Dialog, Field, Input, Portal, Stack } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import { project } from "@/hooks/use-projects";
 import { useForm } from "react-hook-form";
 
 export const AddModal = () => {
   const queryClient = useQueryClient();
+  const [isOpen, setIsOpen] = useState(false);
   const {
     register,
     handleSubmit,
     setValue,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm();
 
-  useState(() => {
+  useEffect(() => {
     if (project) {
       setValue("title", project.title);
       setValue("description", project.description);
@@ -31,6 +32,7 @@ export const AddModal = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["projects"]);
       reset();
+      setIsOpen(false);
     },
   });
   const onSubmit = async (data) => {
@@ -45,7 +47,12 @@ export const AddModal = () => {
     });
   };
   return (
-    <Dialog.Root motionPreset={"slide-in-top"}>
+    <Dialog.Root
+      motionPreset={"slide-in-top"}
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      lazyMount
+    >
       <Dialog.Trigger asChild>
         <Button variant="outline">
           اضافه کردن
@@ -83,12 +90,14 @@ export const AddModal = () => {
                 </Stack>
               </Dialog.Body>
               <Dialog.Footer>
-                <Dialog.ActionTrigger asChild>
-                  <Button variant="outline">لغو</Button>
-                </Dialog.ActionTrigger>
-                <Dialog.ActionTrigger asChild>
-                  <Button type="submit">ذخیره</Button>
-                </Dialog.ActionTrigger>
+                  <Button variant="outline" onClick={()=> setIsOpen(false)}>لغو</Button>
+                <Button
+                  type="submit"
+                  loading={isSubmitting || addProject.isPending}
+                  disabled={isSubmitting || addProject.isPending}
+                >
+                  ذخیره
+                </Button>
               </Dialog.Footer>
             </form>
           </Dialog.Content>

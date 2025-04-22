@@ -1,13 +1,6 @@
 {
   "projects": [
     {
-      "id": "5",
-      "title": "kskbdvskj",
-      "description": "lkxjvBjhbvdbsdlkbklbxbv,kvkjbv.",
-      "price": "12",
-      "status": true
-    },
-    {
       "id": "6",
       "title": "Personal Blender with Cups",
       "description": "Compact blender that comes with travel cups for smoothies.",
@@ -629,51 +622,6 @@
       "description": "Automated litter box that cleans itself after each use.",
       "price": 199.99,
       "status": false
-    },
-    {
-      "id": "96",
-      "title": "asas",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "price": "12",
-      "status": true
-    },
-    {
-      "id": "97",
-      "title": "Pet Grooming Brush",
-      "description": "Self-cleaning grooming brush for cats and dogs.",
-      "price": 19.99,
-      "status": false
-    },
-    {
-      "id": "98",
-      "title": "Peanut Butter Pretzel Bites",
-      "description": "Crunchy pretzel bites filled with peanut butter",
-      "price": 4.19,
-      "status": true
-    },
-    {
-      "id": "6dbd",
-      "title": "hvghb",
-      "description": "dvasdcvasdc",
-      "price": "22"
-    },
-    {
-      "id": "fe87",
-      "title": "aa",
-      "description": "aaaaaaaaaaaaaaaaaaaa",
-      "price": "11"
-    },
-    {
-      "id": "36ca",
-      "title": "zzz",
-      "description": "zzzzzzzzzzzzzzzzzzzzzz",
-      "price": "33"
-    },
-    {
-      "id": "0015",
-      "title": "aaaaa",
-      "description": "aaaaaaaaaaaaaaaa",
-      "price": "555"
     }
   ],
   "comments": [

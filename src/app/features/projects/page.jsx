@@ -24,6 +24,7 @@ import { LuTrash } from "react-icons/lu";
 const Projects = () => {
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
   const { data, isLoading, isError } = useProjects(page);
+  const perPage = 10;
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: deletProject,
@@ -68,7 +69,7 @@ const Projects = () => {
             <Table.Body>
               {data?.data?.map((project, index) => (
                 <Table.Row key={project.id}>
-                  <Table.Cell>{(page - 1) * 10 + index + 1}</Table.Cell>
+                  <Table.Cell>{(page - 1) * perPage + index + 1}</Table.Cell>
                   <Table.Cell>{project.title}</Table.Cell>
                   <Table.Cell>{project.description}</Table.Cell>
                   <Table.Cell>{project.price}</Table.Cell>
@@ -89,8 +90,8 @@ const Projects = () => {
           </Table.Root>
           <HStack justify={"center"} align={"center"}>
             <Pagination.Root
-              count={100}
-              pageSize={10}
+              count={data.items}
+              pageSize={perPage}
               page={page}
               onPageChange={(e) => setPage(e.page)}
             >

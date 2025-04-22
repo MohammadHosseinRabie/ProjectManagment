@@ -22,7 +22,7 @@ export const EditModal = ({ project }) => {
     handleSubmit,
     setValue,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm();
 
   useState(() => {
