@@ -17,28 +17,34 @@ import {
 } from "@chakra-ui/react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { parseAsInteger, useQueryState } from "nuqs";
-import React from "react";
+import React, { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { LuTrash } from "react-icons/lu";
 
 const Projects = () => {
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
   const { data, isLoading, isError } = useProjects(page);
+  const [loadingId, setLoadingId] = useState(null);
   const perPage = 10;
   const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: deletProject,
+    onMutate: (id) => {
+      setLoadingId(id);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["projects", page] });
+      setLoadingId(null);
     },
   });
 
   if (isLoading) {
-    return <Spinner size={"xl"} />;
+    return <Box p={"20"}><Spinner size={"md"}/>در حال بارگذاری...</Box> ;
   }
 
   if (isError) {
-    return <div>خطا در بارگذاری داده‌ها!</div>;
+    return <Box p={"20"}>خطا در بارگذاری داده‌ها!</Box>;
   }
 
   return (
@@ -50,7 +56,7 @@ const Projects = () => {
         </Box>
       </HStack>
       {data?.data?.length === 0 ? (
-        <Box>
+        <Box p={"20"}>
           <Text>هیچ پروژه ای برای نمایش وجود ندارد!</Text>
         </Box>
       ) : (
@@ -70,15 +76,20 @@ const Projects = () => {
               {data?.data?.map((project, index) => (
                 <Table.Row key={project.id}>
                   <Table.Cell>{(page - 1) * perPage + index + 1}</Table.Cell>
-                  <Table.Cell>{project.title}</Table.Cell>
+                  <Table.Cell>{project.name}</Table.Cell>
                   <Table.Cell>{project.description}</Table.Cell>
                   <Table.Cell>{project.price}</Table.Cell>
                   <Table.Cell textAlign={"left"}>
                     <IconButton
                       variant={"ghost"}
                       onClick={() => mutate(project.id)}
+                      isDisabled={loadingId === project.id}
                     >
-                      <LuTrash />
+                      {loadingId === project.id ? (
+                        <Spinner size="sm" />
+                      ) : (
+                        <LuTrash />
+                      )}
                     </IconButton>
                   </Table.Cell>
                   <Table.Cell>

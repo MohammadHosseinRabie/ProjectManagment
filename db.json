@@ -1,642 +1,122 @@
 {
   "projects": [
     {
-      "id": "6",
-      "title": "Personal Blender with Cups",
-      "description": "Compact blender that comes with travel cups for smoothies.",
-      "price": 34.99,
-      "status": true
-    },
-    {
-      "id": "7",
-      "title": "Garden Tool Belt",
-      "description": "Handy belt for carrying garden tools while working.",
-      "price": 22.99,
-      "status": true
-    },
-    {
-      "id": "8",
-      "title": "Lentil Pasta",
-      "description": "Gluten-free pasta made from lentils, high in protein.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "9",
-      "title": "Black Bean Salsa",
-      "description": "Spicy salsa made with black beans and tomatoes.",
-      "price": 3.49,
-      "status": true
-    },
-    {
-      "id": "10",
-      "title": "First Aid Kit",
-      "description": "Comprehensive first aid kit for emergency situations.",
-      "price": 29.99,
-      "status": false
-    },
-    {
-      "id": "11",
-      "title": "Compact Umbrella",
-      "description": "Portable and lightweight umbrella for protection from rain.",
-      "price": 12.99,
-      "status": true
-    },
-    {
-      "id": "12",
-      "title": "Peanut Butter Pretzel Bites",
-      "description": "Crunchy pretzel bites filled with peanut butter",
-      "price": 4.19,
-      "status": true
-    },
-    {
-      "id": "14",
-      "title": "Digital Alarm Clock",
-      "description": "Snooze function and LED display for easy reading.",
-      "price": 19.99,
-      "status": false
-    },
-    {
-      "id": "15",
-      "title": "Honey Mustard Sauce",
-      "description": "Creamy honey mustard sauce for dipping or dressing.",
-      "price": 3.29,
-      "status": false
-    },
-    {
-      "id": "16",
-      "title": "Fitness Resistance Bands",
-      "description": "Set of resistance bands for home workouts.",
-      "price": 29.99,
-      "status": false
-    },
-    {
-      "id": "17",
-      "title": "Smartphone Gimbal",
-      "description": "Stabilizing gimbal for smooth video recording.",
-      "price": 89.99,
-      "status": false
-    },
-    {
-      "id": "18",
-      "title": "Almond Butter Granola Bars",
-      "description": "Crunchy granola bars made with almond butter, oats, and honey, perfect for on-the-go snacking.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "19",
-      "title": "Thai Peanut Dressing",
-      "description": "A creamy and tangy dressing perfect for salads or as a dipping sauce.",
-      "price": 3.29,
-      "status": true
-    },
-    {
-      "id": "20",
-      "title": "Vegetable Stock",
-      "description": "Rich vegetable stock for cooking soups and stews.",
-      "price": 2.49,
-      "status": false
-    },
-    {
-      "id": "21",
-      "title": "Portable Charger with Solar Panel",
-      "description": "Eco-friendly charger with a built-in solar panel for outdoor use.",
-      "price": 45.99,
-      "status": true
-    },
-    {
-      "id": "22",
-      "title": "Portable Air Pump",
-      "description": "Compact pump ideal for inflating sports equipment or rafts.",
-      "price": 19.99,
-      "status": true
-    },
-    {
-      "id": "23",
-      "title": "Portable Pet Water Bottle",
-      "description": "Travel-friendly water bottle for pets on the go.",
-      "price": 18.99,
-      "status": true
-    },
-    {
-      "id": "24",
-      "title": "Children's Musical Instrument Set",
-      "description": "Fun instruments to introduce kids to music.",
-      "price": 39.99,
-      "status": false
-    },
-    {
-      "id": "25",
-      "title": "Smart Thermostat with Wi-Fi",
-      "description": "Wi-Fi enabled thermostat that learns your habits.",
-      "price": 169.99,
-      "status": false
-    },
-    {
-      "id": "26",
-      "title": "Cranberry Citrus Sauce",
-      "description": "A tangy sauce made with cranberries and citrus zest, perfect for turkey and chicken dishes.",
-      "price": 3.99,
-      "status": false
-    },
-    {
-      "id": "27",
-      "title": "Vegan Chocolate Cake Mix",
-      "description": "Plant-based mix for a rich chocolate cake.",
-      "price": 4.29,
-      "status": true
-    },
-    {
-      "id": "28",
-      "title": "Sesame Seeds",
-      "description": "Crunchy seeds perfect for toppings and baking.",
-      "price": 1.99,
-      "status": false
-    },
-    {
-      "id": "29",
-      "title": "Creamy Tomato Basil Soup",
-      "description": "Rich and creamy tomato basil soup, perfect with a grilled cheese.",
-      "price": 3.29,
-      "status": true
-    },
-    {
-      "id": "30",
-      "title": "Pet Hair Remover",
-      "description": "Effective roller for removing pet hair from furniture.",
-      "price": 9.99,
-      "status": true
-    },
-    {
-      "id": "31",
-      "title": "Mediterranean Couscous Salad",
-      "description": "Couscous salad with cucumbers, tomatoes, feta, and olives, ready to eat.",
-      "price": 5.49,
-      "status": false
-    },
-    {
-      "id": "32",
-      "title": "Microfiber Cleaning Cloth Set",
-      "description": "Assorted cloths for cleaning electronics and delicate surfaces.",
-      "price": 9.99,
-      "status": true
-    },
-    {
-      "id": "33",
-      "title": "Kids' STEM Robotics Kit",
-      "description": "Educational robotics kit for building and programming.",
-      "price": 59.99,
-      "status": true
-    },
-    {
-      "id": "34",
-      "title": "Pet Caress Brush",
-      "description": "Gentle brush for removing loose fur from pets.",
-      "price": 12.99,
-      "status": false
-    },
-    {
-      "id": "35",
-      "title": "Electric Meat Grinder",
-      "description": "Powerful grinder for making sausage and burgers at home.",
-      "price": 89.99,
-      "status": false
-    },
-    {
-      "id": "36",
-      "title": "Stainless Steel Grater",
-      "description": "Multi-functional grater for cheese and vegetables.",
-      "price": 14.99,
-      "status": false
-    },
-    {
-      "id": "37",
-      "title": "Vegetable Lentil Soup",
-      "description": "A hearty soup made with lentils, a variety of vegetables, and spices, ideal for a nutritious meal.",
-      "price": 3.49,
-      "status": false
-    },
-    {
-      "id": "38",
-      "title": "Salt and Pepper Grinder Set",
-      "description": "Adjustable grinders for fresh spices at the table.",
-      "price": 19.99,
-      "status": false
-    },
-    {
-      "id": "39",
-      "title": "Reflective Safety Vest",
-      "description": "Bright safety vest for outdoor visibility during any activity.",
-      "price": 19.99,
-      "status": true
-    },
-    {
-      "id": "40",
-      "title": "Eco-Friendly Yoga Mat",
-      "description": "Made from biodegradable materials for eco-conscious yogis.",
-      "price": 39.99,
-      "status": true
-    },
-    {
-      "id": "41",
-      "title": "Folding Backpack Chair",
-      "description": "Versatile chair that easily folds up for carrying.",
-      "price": 49.99,
-      "status": true
-    },
-    {
-      "id": "42",
-      "title": "Coffee Subscription Service",
-      "description": "Monthly subscription for freshly roasted coffee delivered to your door.",
-      "price": 29.99,
-      "status": false
-    },
-    {
-      "id": "43",
-      "title": "Caribbean Jerk Marinade",
-      "description": "A spicy marinade perfect for chicken and fish.",
-      "price": 3.79,
-      "status": false
-    },
-    {
-      "id": "44",
-      "title": "Pet Bed with Removable Cover",
-      "description": "Comfy pet bed with washable cover for easy cleaning.",
-      "price": 49.99,
-      "status": false
-    },
-    {
-      "id": "45",
-      "title": "Savory Oatmeal",
-      "description": "Oatmeal made with savory spices and vegetables.",
-      "price": 2.49,
-      "status": false
-    },
-    {
-      "id": "46",
-      "title": "Blender Bottle",
-      "description": "Portable mixer bottle for smoothies and protein shakes.",
-      "price": 12.99,
-      "status": true
-    },
-    {
-      "id": "47",
-      "title": "Dark Chocolate Tart",
-      "description": "Decadent tart made with rich dark chocolate.",
-      "price": 6.29,
-      "status": true
-    },
-    {
-      "id": "48",
-      "title": "Portable Grill Cover",
-      "description": "Durable cover to protect your grill from the elements.",
-      "price": 24.99,
-      "status": true
-    },
-    {
-      "id": "49",
-      "title": "Hydration Backpack",
-      "description": "Lightweight backpack with an insulated water reservoir for hydration on the go.",
-      "price": 39.99,
-      "status": true
-    },
-    {
-      "id": "50",
-      "title": "Aeropress Coffee Maker",
-      "description": "Portable coffee maker for rich brews on the go.",
-      "price": 29.99,
-      "status": false
-    },
-    {
-      "id": "51",
-      "title": "Mint Chocolate Chip Ice Cream",
-      "description": "Creamy ice cream with refreshing mint flavor and chocolate chips.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "52",
-      "title": "Chickpea Pancakes",
-      "description": "Savory pancakes made with chickpea flour, high in protein.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "53",
-      "title": "Spicy Thai Chili Sauce",
-      "description": "A sweet and spicy sauce for dipping or cooking.",
-      "price": 3.29,
-      "status": true
-    },
-    {
-      "id": "54",
-      "title": "Pest Control Traps",
-      "description": "Non-toxic traps for catching household pests safely.",
-      "price": 22.99,
-      "status": true
-    },
-    {
-      "id": "55",
-      "title": "Maxi Wrap Dress",
-      "description": "A flowy maxi dress perfect for both casual and semi-formal occasions.",
-      "price": 49.99,
-      "status": true
-    },
-    {
-      "id": "56",
-      "title": "Stainless Steel BBQ Grill Set",
-      "description": "Essential tools for outdoor barbecues including tongs and spatula.",
-      "price": 49.99,
-      "status": true
-    },
-    {
-      "id": "57",
-      "title": "Running Shorts",
-      "description": "Lightweight and breathable running shorts for your workouts.",
-      "price": 34.99,
-      "status": true
-    },
-    {
-      "id": "58",
-      "title": "Maple Bacon Potato Chips",
-      "description": "Savory potato chips with a hint of maple sweetness and crispy bacon flavor.",
-      "price": 2.89,
-      "status": false
-    },
-    {
-      "id": "59",
-      "title": "Homemade Salsa",
-      "description": "Fresh salsa made with tomatoes, onions, and cilantro.",
-      "price": 3.79,
-      "status": false
-    },
-    {
-      "id": "60",
-      "title": "Coconut Cream Pie Yogurt",
-      "description": "Yogurt with the flavors of coconut cream pie, nice and indulgent.",
-      "price": 1.99,
-      "status": false
-    },
-    {
-      "id": "61",
-      "title": "Pet Grooming Gloves",
-      "description": "Gentle grooming gloves for shedding pets.",
-      "price": 9.99,
-      "status": false
-    },
-    {
-      "id": "62",
-      "title": "Eco-Friendly Disposable Plates",
-      "description": "Compostable plates suitable for various occasions.",
-      "price": 22.99,
-      "status": false
-    },
-    {
-      "id": "63",
-      "title": "Smart Light Switch",
-      "description": "Control lights remotely with this smart switch.",
-      "price": 29.99,
-      "status": true
-    },
-    {
-      "id": "64",
-      "title": "Tomatillo Salsa",
-      "description": "Tangy salsa made from tomatillos and peppers.",
-      "price": 3.29,
-      "status": true
-    },
-    {
-      "id": "65",
-      "title": "Electric Stool Heater",
-      "description": "Heated stool cover for extra comfort during winter.",
-      "price": 29.99,
-      "status": false
-    },
-    {
-      "id": "66",
-      "title": "Lightweight Travel Backpack",
-      "description": "Compact and portable backpack for day trips and travel.",
-      "price": 39.99,
-      "status": true
-    },
-    {
-      "id": "67",
-      "title": "Hummus Variety Pack",
-      "description": "A selection of different flavored hummus, great for snacking.",
-      "price": 5.99,
-      "status": true
-    },
-    {
-      "id": "68",
-      "title": "Lentil Vegetable Curry",
-      "description": "A flavorful lentil curry cooked with vegetables and spices.",
-      "price": 4.49,
-      "status": true
-    },
-    {
-      "id": "69",
-      "title": "Sun-Dried Tomato Pesto",
-      "description": "A rich pesto made with sun-dried tomatoes and pine nuts.",
-      "price": 4.49,
-      "status": true
-    },
-    {
-      "id": "70",
-      "title": "Decorative LED Neon Sign",
-      "description": "Bright, vibrant sign to add flair to any space.",
-      "price": 45.99,
-      "status": true
-    },
-    {
-      "id": "71",
-      "title": "Honeycrisp Apple Chips",
-      "description": "Crispy and sweet dried apple slices",
-      "price": 3.49,
-      "status": true
-    },
-    {
-      "id": "72",
-      "title": "Honey Nut Cheerios",
-      "description": "Classic cereal made with whole grains and honey.",
-      "price": 4.29,
-      "status": true
-    },
-    {
-      "id": "73",
-      "title": "Pasta Salad Kit",
-      "description": "All-in-one kit for making pasta salad easily.",
-      "price": 5.99,
-      "status": false
-    },
-    {
-      "id": "74",
-      "title": "Wildflower Honey",
-      "description": "Natural honey sourced from wildflowers.",
-      "price": 4.99,
-      "status": false
-    },
-    {
-      "id": "75",
-      "title": "Wildflower Honey",
-      "description": "Natural honey sourced from wildflowers.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "76",
-      "title": "Maple Oatmeal",
-      "description": "Delicious maple-flavored oatmeal for a quick breakfast.",
-      "price": 2.99,
-      "status": false
-    },
-    {
-      "id": "77",
-      "title": "Dog Training Collar",
-      "description": "Rechargeable training collar for effective behavior training.",
-      "price": 39.99,
-      "status": true
-    },
-    {
-      "id": "78",
-      "title": "Vanilla Pudding Mix",
-      "description": "Instant mix for creamy vanilla pudding.",
-      "price": 1.29,
-      "status": false
-    },
-    {
-      "id": "79",
-      "title": "Pear and Gorgonzola Salad",
-      "description": "Fresh salad with pears, gorgonzola cheese, and nuts, perfect for lunch.",
-      "price": 5.49,
-      "status": true
-    },
-    {
-      "id": "80",
-      "title": "Luxury Bath Salts",
-      "description": "Scented bath salts for relaxation and self-care.",
-      "price": 19.99,
-      "status": false
-    },
-    {
-      "id": "81",
-      "title": "Vegetarian Stuffed Peppers",
-      "description": "Bell peppers stuffed with rice, beans, and spices, ready to bake.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "82",
-      "title": "Spicy Thai Chili Sauce",
-      "description": "A sweet and spicy sauce for dipping or cooking.",
-      "price": 3.29,
-      "status": false
-    },
-    {
-      "id": "83",
-      "title": "Sour Cream",
-      "description": "Tangy sour cream, perfect for dips and toppings.",
-      "price": 3.49,
-      "status": false
-    },
-    {
-      "id": "84",
-      "title": "Lemonade Mix",
-      "description": "Sweetened powder for refreshing lemonade.",
-      "price": 1.99,
-      "status": true
-    },
-    {
-      "id": "85",
-      "title": "Chocolate Hazelnut Spread",
-      "description": "A creamy spread made with chocolate and hazelnuts, perfect for toast.",
-      "price": 5.99,
-      "status": false
-    },
-    {
-      "id": "86",
-      "title": "Zesty Garlic Marinade",
-      "description": "A tangy marinade for meats and veggies, packed with garlic flavor.",
-      "price": 4.49,
-      "status": false
-    },
-    {
-      "id": "87",
-      "title": "Apple Cinnamon Oatmeal",
-      "description": "Warm oatmeal flavored with apple and cinnamon.",
-      "price": 2.89,
-      "status": false
-    },
-    {
-      "id": "88",
-      "title": "Compact Electric Kettle",
-      "description": "Quick-boiling kettle for home and office use.",
-      "price": 29.99,
-      "status": true
-    },
-    {
-      "id": "89",
-      "title": "Cilantro Lime Rice",
-      "description": "Easy-to-prepare rice with cilantro and lime flavors, great as a side.",
-      "price": 2.99,
-      "status": true
-    },
-    {
-      "id": "90",
-      "title": "Lemon Herb Quinoa",
-      "description": "Fluffy quinoa mixed with lemon zest and herbs, a perfect side.",
-      "price": 3.49,
-      "status": false
-    },
-    {
-      "id": "91",
-      "title": "Wildflower Honey",
-      "description": "Natural honey sourced from wildflowers.",
-      "price": 4.99,
-      "status": true
-    },
-    {
-      "id": "92",
-      "title": "Inflatable Paddle Board",
-      "description": "Lightweight and portable paddle board for water sports.",
-      "price": 349.99,
-      "status": true
-    },
-    {
-      "id": "93",
-      "title": "Set of Measuring Spoons",
-      "description": "Stainless steel measuring spoons set for cooking.",
-      "price": 12.99,
-      "status": true
-    },
-    {
-      "id": "94",
-      "title": "Elegant Lace Dress",
-      "description": "A stunning lace dress perfect for special occasions.",
-      "price": 79.99,
-      "status": true
-    },
-    {
-      "id": "95",
-      "title": "Self-Cleaning Cat Litter Box",
-      "description": "Automated litter box that cleans itself after each use.",
-      "price": 199.99,
-      "status": false
+      "id": "82d1ad69-eb93-404e-bafa-1b3827ec027e",
+      "name": "First Project Updated",
+      "description": "This Is A Test Project And Updated",
+      "ownerId": "42d9319e-8d9e-403d-a317-7e01a43ae75b",
+      "createdAt": "2025-04-17T07:05:29.395Z",
+      "updatedAt": "2025-04-17T07:05:29.395Z",
+      "owner": {
+        "id": "42d9319e-8d9e-403d-a317-7e01a43ae75b",
+        "email": "test@example.com",
+        "name": "Test User",
+        "password": "hashed-or-temp-password",
+        "createdAt": "2025-04-17T06:58:58.689Z",
+        "updatedAt": "2025-04-17T06:58:33.616Z"
+      },
+      "tasks": [],
+      "members": []
+    },
+    {
+      "id": "5c8a4527-8a39-451f-a02d-0ca50d624eda",
+      "name": "second Project ",
+      "description": "This Is A Test Project",
+      "ownerId": "42d9319e-8d9e-403d-a317-7e01a43ae75b",
+      "createdAt": "2025-04-17T07:05:50.099Z",
+      "updatedAt": "2025-04-17T07:05:50.099Z",
+      "owner": {
+        "id": "42d9319e-8d9e-403d-a317-7e01a43ae75b",
+        "email": "test@example.com",
+        "name": "Test User",
+        "password": "hashed-or-temp-password",
+        "createdAt": "2025-04-17T06:58:58.689Z",
+        "updatedAt": "2025-04-17T06:58:33.616Z"
+      },
+      "tasks": [
+        {
+          "id": "cd4f48d6-b487-4d0d-b2c9-9558fb250d6c",
+          "title": "Test task with custom field",
+          "description": null,
+          "status": "TODO",
+          "priority": "MEDIUM",
+          "projectId": "5c8a4527-8a39-451f-a02d-0ca50d624eda",
+          "assigneeId": null,
+          "dueDate": null,
+          "createdAt": "2025-04-22T08:25:41.773Z",
+          "updatedAt": "2025-04-22T08:25:41.773Z"
+        }
+      ],
+      "members": []
+    },
+    {
+      "id": "1723f8f3-b50a-4273-88dd-6a03d2474a87",
+      "name": "masaud",
+      "description": "A project to test custom fields",
+      "ownerId": "55f90b97-4497-413b-a7fe-0266f9e5e577",
+      "createdAt": "2025-04-23T07:20:38.205Z",
+      "updatedAt": "2025-04-23T07:20:38.205Z",
+      "owner": {
+        "id": "55f90b97-4497-413b-a7fe-0266f9e5e577",
+        "email": "masaud@gmail.com",
+        "name": "masaud",
+        "password": "12345678",
+        "createdAt": "2025-04-23T07:14:49.208Z",
+        "updatedAt": "2025-04-23T07:14:49.208Z"
+      },
+      "tasks": [
+        {
+          "id": "01400531-ed6a-45fd-8b4b-4907ffbfa2c7",
+          "title": "masaud Task",
+          "description": "Testing custom fields",
+          "status": "TODO",
+          "priority": "MEDIUM",
+          "projectId": "1723f8f3-b50a-4273-88dd-6a03d2474a87",
+          "assigneeId": null,
+          "dueDate": null,
+          "createdAt": "2025-04-23T07:24:45.968Z",
+          "updatedAt": "2025-04-23T07:24:45.968Z"
+        }
+      ],
+      "members": []
     }
   ],
-  "comments": [
+  "tasks": [
     {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
-    },
-    {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "id": "01400531-ed6a-45fd-8b4b-4907ffbfa2c7",
+      "title": "masaud Task",
+      "description": "Testing custom fields",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "projectId": "1723f8f3-b50a-4273-88dd-6a03d2474a87",
+      "assigneeId": null,
+      "dueDate": null,
+      "createdAt": "2025-04-23T07:24:45.968Z",
+      "updatedAt": "2025-04-23T07:24:45.968Z",
+      "assignee": null,
+      "TaskFieldValue": [
+        {
+          "id": "31c40165-a5ac-43f8-b487-718b8aa84285",
+          "taskId": "01400531-ed6a-45fd-8b4b-4907ffbfa2c7",
+          "fieldId": "3db39b1f-28a3-478a-902c-af940a2a0817",
+          "value": "In Progress",
+          "field": {
+            "id": "3db39b1f-28a3-478a-902c-af940a2a0817",
+            "projectId": "1723f8f3-b50a-4273-88dd-6a03d2474a87",
+            "name": "Task Status",
+            "type": "SELECT",
+            "isRequired": true,
+            "options": [
+              "Not Started",
+              "In Progress",
+              "Under Review",
+              "Completed"
+            ],
+            "createdAt": "2025-04-23T07:22:43.068Z",
+            "updatedAt": "2025-04-23T07:22:43.068Z"
+          }
+        }
+      ]
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

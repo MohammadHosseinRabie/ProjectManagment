@@ -94,7 +94,7 @@ export const AddModal = () => {
                 <Button
                   type="submit"
                   loading={isSubmitting || addProject.isPending}
-                  disabled={isSubmitting || addProject.isPending}
+                  disabled={addProject.isPending}
                 >
                   ذخیره
                 </Button>
