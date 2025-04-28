@@ -22,21 +22,21 @@ export const Sidebar = () => {
         asChild
         size={"2xl"}
         w={"full"}
-        colorPalette={"teal"}
-        variant={pathname === "/features/tasks" ? "subtle" : 'outline'}
+        colorPalette={"cyan"}
+        variant={pathname === "/tasks" ? "subtle" : 'outline'}
         rounded={"full"}
       >
-        <Link href="/features/tasks">تسک ها</Link>
+        <Link href="/tasks">تسک ها</Link>
       </Button>
       <Button
         asChild
         size={"2xl"}
         w={"full"}
-        colorPalette={"teal"}
-        variant={pathname === "/features/projects" ? "subtle" : 'outline'}
+        colorPalette={"cyan"}
+        variant={pathname === "/projects" ? "subtle" : 'outline'}
         rounded={"full"}
       >
-        <Link href="/features/projects">پروژه ها</Link>
+        <Link href="/projects">پروژه ها</Link>
       </Button>
     </VStack>
   );

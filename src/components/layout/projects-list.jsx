@@ -25,10 +25,10 @@ export const ProjectsList = () => {
           asChild
           size={"2xl"}
           w={"full"}
-          colorPalette={"teal"}
+          colorPalette={"cyan"}
           rounded={"full"}
           key={project.id}
-          variant={pathname === `/projects/${project.id}/tasks` ? 'subtle' : 'outline '}
+          variant={pathname === `/projects/${project.id}/tasks` ? 'subtle' : 'outline'}
         >
           <Link href={`/projects/${project.id}/tasks`}>{project.name}</Link>
         </Button>

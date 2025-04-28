@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Profile from "./features/profile/page";
 import { Flex } from "@chakra-ui/react";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Navbar } from "@/components/layout/navbar";
+import Profile from "./(features)/profile/page";
 
 export default function Home() {
   const router = useRouter();
