@@ -1,8 +1,8 @@
-import axios from "axios"
+import { axiosClient } from "./axios-client";
 
 
 const addNewProject = async (newProject) => {
-    const response = await axios.post(`http://localhost:3001/projects/`, newProject);
+    const response = await axiosClient.post(`/projects/`, newProject);
     return response.data;
 };
 

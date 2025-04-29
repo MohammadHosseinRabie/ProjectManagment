@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import { axiosClient } from "./axios-client";
 
 const fetchProjects = async () => {
-    const { data } = await axios.get("http://localhost:3001/projects")
+    const { data } = await axiosClient.get("/projects")
     return data;
 };
 

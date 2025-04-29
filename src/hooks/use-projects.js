@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { axiosClient } from "./axios-client";
 
-const fetchProjects = async (page) => {
-  const { data } = await axios.get(`http://localhost:3001/projects?_page=${page}&_per_page=10`)
+const fetchProjects = async () => {
+  const { data } = await axiosClient.get(`/projects`)
   return data;
 };
 
-const useProjects = (page) => {
+const useProjects = () => {
   return useQuery({
-    queryKey: ["projects", page],
-    queryFn: () => fetchProjects(page),
+    queryKey: ["projects"],
+    queryFn: () => fetchProjects(),
     keepPreviousData: true
   });
 };

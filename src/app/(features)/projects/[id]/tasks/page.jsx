@@ -1,7 +1,8 @@
 "use client";
 
-import { AddModal } from "@/components/ui/add-modal";
-import getTasks from "@/hooks/use-get-tasks";
+import { AddTaskModal } from "@/components/ui/add-task";
+import deleteTask from "@/hooks/use-delete-task";
+import useGetTasks from "@/hooks/use-get-tasks";
 import {
   Box,
   HStack,
@@ -11,13 +12,27 @@ import {
   Table,
   Text,
 } from "@chakra-ui/react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { LuPen, LuTrash } from "react-icons/lu";
 
 export default function ProjectTasks() {
   const params = useParams();
   const projectId = params.id;
-  const { data, isLoading, isError } = getTasks(projectId);
+  const [loadingId, setLoadingId] = useState(null);
+  const { data, isLoading, isError } = useGetTasks(projectId);
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: deleteTask,
+    onMutate: (id) => {
+      setLoadingId(id);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["tasks", page] });
+      setLoadingId(null);
+    },
+  })
   if (isLoading) {
     return (
       <Box>
@@ -29,13 +44,16 @@ export default function ProjectTasks() {
   if (isError) {
     return <Box>خطا در بارگذاری داده‌ها!</Box>;
   }
+  if (!projectId) {
+    return <Box>شناسه پروژه نامعتبر است</Box>;
+  }
 
   return (
     <Stack dir="rtl" p={"12"}>
       <HStack justifyContent={"space-between"} w={"full"}>
         <Text textStyle={"4xl"}>تسک های پروژه</Text>
         <Box>
-          <AddModal />
+          <AddTaskModal />
         </Box>
       </HStack>
       <Table.Root size="sm" interactive>
@@ -49,15 +67,15 @@ export default function ProjectTasks() {
             <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
           </Table.Row>
         </Table.Header>
-        {data?.map((task, index) => (
-          <Table.Body key={task.id}>
-            <Table.Row>
+        <Table.Body>
+          {data?.map((task, index) => (
+            <Table.Row key={task.id}>
               <Table.Cell>{index + 1}</Table.Cell>
               <Table.Cell>{task.title}</Table.Cell>
               <Table.Cell>{task.description}</Table.Cell>
               <Table.Cell>{task.status}</Table.Cell>
               <Table.Cell textAlign={"left"}>
-                <IconButton variant={"ghost"}>
+                <IconButton variant={"ghost"} onClick={() => mutate(task.id)} isDisabled={loadingId === task.id}>
                   <LuTrash />
                 </IconButton>
               </Table.Cell>
@@ -67,8 +85,8 @@ export default function ProjectTasks() {
                 </IconButton>
               </Table.Cell>
             </Table.Row>
-          </Table.Body>
-        ))}
+          ))}
+        </Table.Body>
       </Table.Root>
     </Stack>
   );

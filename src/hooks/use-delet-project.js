@@ -1,8 +1,8 @@
-import axios from "axios"
+import { axiosClient } from "./axios-client";
 
 
 const deletProject = async (id) => {
-    const response = await axios.delete(`http://localhost:3001/projects/${id}`)
+    const response = await axiosClient.delete(`/projects/${id}`)
     return response.data;
 };
 
