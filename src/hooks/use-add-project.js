@@ -1,8 +1,8 @@
 import { axiosClient } from "./axios-client";
 
 
-const addNewProject = async (newProject) => {
-    const response = await axiosClient.post(`/projects/`, newProject);
+const addNewProject = async () => {
+    const response = await axiosClient.post(`/projects`);
     return response.data;
 };
 

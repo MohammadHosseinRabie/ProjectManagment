@@ -21,9 +21,8 @@ export const AddModal = () => {
 
   useEffect(() => {
     if (project) {
-      setValue("title", project.title);
+      setValue("name", project.name);
       setValue("description", project.description);
-      setValue("price", project.price);
     }
   }, [project, setValue]);
 
@@ -36,14 +35,13 @@ export const AddModal = () => {
     },
   });
   const onSubmit = async (data) => {
-    if (!data.title.trim() || !data.description.trim() || !data.price.trim())
+    if (!data.name.trim() || !data.description.trim())
       return;
 
     await addProject.mutateAsync({
       id: project?.id,
-      title: data.title,
+      name: data.name,
       description: data.description,
-      price: data.price,
     });
   };
   return (
@@ -73,19 +71,13 @@ export const AddModal = () => {
                     <Field.Label>
                       نام پروژه <Field.RequiredIndicator />
                     </Field.Label>
-                    <Input placeholder="نام پروژه" {...register("title")} />
+                    <Input placeholder="نام پروژه" {...register("name")} />
                   </Field.Root>
                   <Field.Root required>
                     <Field.Label>
                       توضیحات <Field.RequiredIndicator />
                     </Field.Label>
                     <Input placeholder="توضیحات" {...register("description")} />
-                  </Field.Root>
-                  <Field.Root required>
-                    <Field.Label>
-                      قیمت <Field.RequiredIndicator />
-                    </Field.Label>
-                    <Input placeholder="قیمت" {...register("price")} />
                   </Field.Root>
                 </Stack>
               </Dialog.Body>

@@ -1,6 +1,7 @@
 "use client";
 
 import { AddTaskModal } from "@/components/ui/add-task";
+import { EditModal } from "@/components/ui/edit-modal";
 import deleteTask from "@/hooks/use-delete-task";
 import useGetTasks from "@/hooks/use-get-tasks";
 import {
@@ -29,7 +30,7 @@ export default function ProjectTasks() {
       setLoadingId(id);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["tasks", page] });
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
       setLoadingId(null);
     },
   })
@@ -80,9 +81,7 @@ export default function ProjectTasks() {
                 </IconButton>
               </Table.Cell>
               <Table.Cell>
-                <IconButton variant={"ghost"}>
-                  <LuPen />
-                </IconButton>
+                  <EditModal task={task} />
               </Table.Cell>
             </Table.Row>
           ))}

@@ -11,7 +11,7 @@ export const Navbar = () => {
   const { toggleColorMode } = useColorMode();
   const router = useRouter();
   const handleLogOut = () => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
     router.push("/login");
   }
 
@@ -30,7 +30,7 @@ export const Navbar = () => {
           <Menu.Positioner>
             <Menu.Content>
               <Menu.Item value="new-txt" asChild>
-                <Link href={"/features/profile"}>حساب کاربری</Link>
+                <Link href={"/profile"}>حساب کاربری</Link>
               </Menu.Item>
               <Menu.Item value="new-file" onClick={handleLogOut}>خروج از حساب کاربری</Menu.Item>
             </Menu.Content>
