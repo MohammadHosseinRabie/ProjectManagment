@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Dialog, Field, Input, Portal, Stack } from "@chakra-ui/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import { useForm } from "react-hook-form";
@@ -40,6 +40,7 @@ export const AddTaskModal = () => {
   return (
     <Dialog.Root
       motionPreset="slide-in-top"
+      closeOnInteractOutside
       open={isOpen}
       onOpenChange={setIsOpen}
       lazyMount

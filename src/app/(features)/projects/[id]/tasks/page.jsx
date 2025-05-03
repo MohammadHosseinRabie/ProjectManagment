@@ -33,7 +33,7 @@ export default function ProjectTasks() {
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
       setLoadingId(null);
     },
-  })
+  });
   if (isLoading) {
     return (
       <Box>
@@ -76,12 +76,20 @@ export default function ProjectTasks() {
               <Table.Cell>{task.description}</Table.Cell>
               <Table.Cell>{task.status}</Table.Cell>
               <Table.Cell textAlign={"left"}>
-                <IconButton variant={"ghost"} onClick={() => mutate(task.id)} isDisabled={loadingId === task.id}>
-                  <LuTrash />
+                <IconButton
+                  variant={"ghost"}
+                  onClick={() => mutate(task.id)}
+                  isDisabled={loadingId === task.id}
+                >
+                  {loadingId === task.id ? (
+                    <Spinner size="sm" />
+                  ) : (
+                    <LuTrash />
+                  )}
                 </IconButton>
               </Table.Cell>
               <Table.Cell>
-                  <EditModal task={task} />
+                <EditModal task={task} />
               </Table.Cell>
             </Table.Row>
           ))}
