@@ -16,7 +16,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { LuPen, LuTrash } from "react-icons/lu";
+import { LuTrash } from "react-icons/lu";
 
 export default function ProjectTasks() {
   const params = useParams();
@@ -61,9 +61,12 @@ export default function ProjectTasks() {
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeader w={"auto"}>ردیف</Table.ColumnHeader>
-            <Table.ColumnHeader>نام</Table.ColumnHeader>
-            <Table.ColumnHeader>گروه بندی</Table.ColumnHeader>
+            <Table.ColumnHeader>عنوان</Table.ColumnHeader>
+            <Table.ColumnHeader>توضیحات</Table.ColumnHeader>
             <Table.ColumnHeader>وضعیت</Table.ColumnHeader>
+            <Table.ColumnHeader>تاریخ ساخت</Table.ColumnHeader>
+            <Table.ColumnHeader>تاریخ آپدیت</Table.ColumnHeader>
+            <Table.ColumnHeader></Table.ColumnHeader>
             <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
             <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
           </Table.Row>
@@ -75,6 +78,9 @@ export default function ProjectTasks() {
               <Table.Cell>{task.title}</Table.Cell>
               <Table.Cell>{task.description}</Table.Cell>
               <Table.Cell>{task.status}</Table.Cell>
+              <Table.Cell>{new Date(task.createdAt).toLocaleDateString("fa-IR")}</Table.Cell>
+              <Table.Cell>{new Date(task.updatedAt).toLocaleDateString("fa-IR")}</Table.Cell>
+              <Table.Cell></Table.Cell>
               <Table.Cell textAlign={"left"}>
                 <IconButton
                   variant={"ghost"}
