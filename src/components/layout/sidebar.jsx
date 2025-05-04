@@ -23,16 +23,6 @@ export const Sidebar = () => {
         size={"2xl"}
         w={"full"}
         colorPalette={"cyan"}
-        variant={pathname === "/tasks" ? "subtle" : 'outline'}
-        rounded={"full"}
-      >
-        <Link href="/tasks">تسک ها</Link>
-      </Button>
-      <Button
-        asChild
-        size={"2xl"}
-        w={"full"}
-        colorPalette={"cyan"}
         variant={pathname === "/projects" ? "subtle" : 'outline'}
         rounded={"full"}
       >
