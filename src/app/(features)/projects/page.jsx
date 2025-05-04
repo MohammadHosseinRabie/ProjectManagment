@@ -67,7 +67,8 @@ const Projects = () => {
                 <Table.ColumnHeader w={"auto"}>ردیف</Table.ColumnHeader>
                 <Table.ColumnHeader>پروژه ها</Table.ColumnHeader>
                 <Table.ColumnHeader>توضیحات</Table.ColumnHeader>
-                <Table.ColumnHeader>قیمت</Table.ColumnHeader>
+                <Table.ColumnHeader>تاریخ ساخت</Table.ColumnHeader>
+                <Table.ColumnHeader>تاریخ آپدیت</Table.ColumnHeader>
                 <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
                 <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
               </Table.Row>
@@ -78,7 +79,8 @@ const Projects = () => {
                   <Table.Cell>{(page - 1) * perPage + index + 1}</Table.Cell>
                   <Table.Cell>{project.name}</Table.Cell>
                   <Table.Cell>{project.description}</Table.Cell>
-                  <Table.Cell>{project.price}</Table.Cell>
+                  <Table.Cell>{new Date(project.createdAt).toLocaleDateString("fa-IR")}</Table.Cell>
+                  <Table.Cell>{new Date(project.updatedAt).toLocaleDateString("fa-IR")}</Table.Cell>
                   <Table.Cell textAlign={"left"}>
                     <IconButton
                       variant={"ghost"}
