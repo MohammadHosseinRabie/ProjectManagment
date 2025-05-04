@@ -2,7 +2,7 @@
 
 import { Button, Dialog, Field, Input, Portal, Stack } from "@chakra-ui/react";
 import { useQueryClient } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import { useForm } from "react-hook-form";
 import useAddTask from "@/hooks/use-add-task";
@@ -36,11 +36,27 @@ export const AddTaskModal = () => {
     reset();
     setIsOpen(false);
   };
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dialogRef.current && !dialogRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <Dialog.Root
       motionPreset="slide-in-top"
-      closeOnInteractOutside
       open={isOpen}
       onOpenChange={setIsOpen}
       lazyMount
@@ -54,7 +70,7 @@ export const AddTaskModal = () => {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content dir="rtl">
+          <Dialog.Content dir="rtl" ref={dialogRef}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Dialog.Header>
                 <Dialog.Title>تسک جدید</Dialog.Title>

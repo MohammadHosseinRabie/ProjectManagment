@@ -3,7 +3,7 @@
 import addNewProject from "@/hooks/use-add-project";
 import { Button, Dialog, Field, Input, Portal, Stack } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { LuPlus } from "react-icons/lu";
 import { project } from "@/hooks/use-projects";
 import { useForm } from "react-hook-form";
@@ -39,11 +39,27 @@ export const AddModal = () => {
       return;
 
     await addProject.mutateAsync({
-      id: project?.id,
       name: data.name,
       description: data.description,
     });
   };
+  const dialogRef = useRef(null);
+  
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (dialogRef.current && !dialogRef.current.contains(event.target)) {
+          setIsOpen(false);
+        }
+      };
+  
+      if (isOpen) {
+        document.addEventListener("mousedown", handleClickOutside);
+      }
+  
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [isOpen]);
   return (
     <Dialog.Root
       motionPreset={"slide-in-top"}
@@ -60,7 +76,7 @@ export const AddModal = () => {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content dir="rtl">
+          <Dialog.Content dir="rtl" ref={dialogRef}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Dialog.Header>
                 <Dialog.Title>اضافه کردن</Dialog.Title>
