@@ -8,6 +8,7 @@ import {
   Box,
   HStack,
   IconButton,
+  NativeSelect,
   Spinner,
   Stack,
   Table,
@@ -80,7 +81,18 @@ export default function ProjectTasks() {
               <Table.Cell>{task.status}</Table.Cell>
               <Table.Cell>{new Date(task.createdAt).toLocaleDateString("fa-IR")}</Table.Cell>
               <Table.Cell>{new Date(task.updatedAt).toLocaleDateString("fa-IR")}</Table.Cell>
-              <Table.Cell></Table.Cell>
+              <Table.Cell>
+                {task?.TaskFieldValue?.map((fieldValue) => (
+                  <NativeSelect.Root size="sm" key={fieldValue.id}>
+                  <NativeSelect.Field placeholder={fieldValue.value}>
+                    {fieldValue?.field?.options?.map((opt, index) => (
+                      <option value={opt} key={index}>{opt}</option>
+                    ))}
+                  </NativeSelect.Field>
+                  <NativeSelect.Indicator />
+                </NativeSelect.Root>
+                ))}
+              </Table.Cell>
               <Table.Cell textAlign={"left"}>
                 <IconButton
                   variant={"ghost"}
