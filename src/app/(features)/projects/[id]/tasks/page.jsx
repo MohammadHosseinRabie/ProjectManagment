@@ -3,11 +3,14 @@
 import { AddTaskModal } from "@/components/ui/add-task";
 import { EditModal } from "@/components/ui/edit-modal";
 import deleteTask from "@/hooks/use-delete-task";
+import useGetCustomField from "@/hooks/use-get-custom-field";
 import useGetTasks from "@/hooks/use-get-tasks";
 import {
   Box,
+  Checkbox,
   HStack,
   IconButton,
+  Input,
   NativeSelect,
   Spinner,
   Stack,
@@ -17,13 +20,17 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
 import { LuTrash } from "react-icons/lu";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function ProjectTasks() {
   const params = useParams();
   const projectId = params.id;
   const [loadingId, setLoadingId] = useState(null);
   const { data, isLoading, isError } = useGetTasks(projectId);
+  const { data: customField, isLoading: isLoadingGetCustomField } =
+    useGetCustomField(projectId);
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: deleteTask,
@@ -35,7 +42,7 @@ export default function ProjectTasks() {
       setLoadingId(null);
     },
   });
-  if (isLoading) {
+  if (isLoading & isLoadingGetCustomField) {
     return (
       <Box>
         <Spinner size={"md"} />
@@ -58,61 +65,109 @@ export default function ProjectTasks() {
           <AddTaskModal />
         </Box>
       </HStack>
-      <Table.Root size="sm" interactive>
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeader w={"auto"}>ردیف</Table.ColumnHeader>
-            <Table.ColumnHeader>عنوان</Table.ColumnHeader>
-            <Table.ColumnHeader>توضیحات</Table.ColumnHeader>
-            <Table.ColumnHeader>وضعیت</Table.ColumnHeader>
-            <Table.ColumnHeader>تاریخ ساخت</Table.ColumnHeader>
-            <Table.ColumnHeader>تاریخ آپدیت</Table.ColumnHeader>
-            <Table.ColumnHeader></Table.ColumnHeader>
-            <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
-            <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {data?.map((task, index) => (
-            <Table.Row key={task.id}>
-              <Table.Cell>{index + 1}</Table.Cell>
-              <Table.Cell>{task.title}</Table.Cell>
-              <Table.Cell>{task.description}</Table.Cell>
-              <Table.Cell>{task.status}</Table.Cell>
-              <Table.Cell>{new Date(task.createdAt).toLocaleDateString("fa-IR")}</Table.Cell>
-              <Table.Cell>{new Date(task.updatedAt).toLocaleDateString("fa-IR")}</Table.Cell>
-              <Table.Cell>
-                {task?.TaskFieldValue?.map((fieldValue) => (
-                  <NativeSelect.Root size="sm" key={fieldValue.id}>
-                  <NativeSelect.Field placeholder={fieldValue.value}>
-                    {fieldValue?.field?.options?.map((opt, index) => (
-                      <option value={opt} key={index}>{opt}</option>
-                    ))}
-                  </NativeSelect.Field>
-                  <NativeSelect.Indicator />
-                </NativeSelect.Root>
-                ))}
-              </Table.Cell>
-              <Table.Cell textAlign={"left"}>
-                <IconButton
-                  variant={"ghost"}
-                  onClick={() => mutate(task.id)}
-                  isDisabled={loadingId === task.id}
-                >
-                  {loadingId === task.id ? (
-                    <Spinner size="sm" />
-                  ) : (
-                    <LuTrash />
-                  )}
-                </IconButton>
-              </Table.Cell>
-              <Table.Cell>
-                <EditModal task={task} />
-              </Table.Cell>
+      <Table.ScrollArea maxW={"1200px"}>
+        <Table.Root size="sm" interactive>
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeader w={"auto"}>ردیف</Table.ColumnHeader>
+              <Table.ColumnHeader>عنوان</Table.ColumnHeader>
+              <Table.ColumnHeader>توضیحات</Table.ColumnHeader>
+              <Table.ColumnHeader>وضعیت</Table.ColumnHeader>
+              <Table.ColumnHeader>تاریخ ساخت</Table.ColumnHeader>
+              <Table.ColumnHeader>تاریخ آپدیت</Table.ColumnHeader>
+              <Table.ColumnHeader></Table.ColumnHeader>
+              <Table.ColumnHeader></Table.ColumnHeader>
+              <Table.ColumnHeader></Table.ColumnHeader>
+              <Table.ColumnHeader></Table.ColumnHeader>
+              <Table.ColumnHeader>check</Table.ColumnHeader>
+              <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
+              <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
             </Table.Row>
-          ))}
-        </Table.Body>
-      </Table.Root>
+          </Table.Header>
+          <Table.Body>
+            {data?.map((task, index) => (
+              <Table.Row key={task.id}>
+                <Table.Cell>{index + 1}</Table.Cell>
+                <Table.Cell>{task.title}</Table.Cell>
+                <Table.Cell>{task.description}</Table.Cell>
+                <Table.Cell>{task.status}</Table.Cell>
+                <Table.Cell>
+                  {new Date(task.createdAt).toLocaleDateString("fa-IR")}
+                </Table.Cell>
+                <Table.Cell>
+                  {new Date(task.updatedAt).toLocaleDateString("fa-IR")}
+                </Table.Cell>
+                <Table.Cell minW={"xs"}>
+                  {customField
+                    ?.filter((fieldValue) => fieldValue.type === "SELECT")
+                    .map((fieldValue) => (
+                      <NativeSelect.Root size="sm" key={fieldValue.id}>
+                        <NativeSelect.Field placeholder={fieldValue.value}>
+                          {fieldValue?.options?.map((opt, index) => (
+                            <option value={opt} key={index}>
+                              {opt}
+                            </option>
+                          ))}
+                        </NativeSelect.Field>
+                        <NativeSelect.Indicator />
+                      </NativeSelect.Root>
+                    ))}
+                </Table.Cell>
+                <Table.Cell minW={"xs"}>
+                  {customField
+                    ?.filter((fieldValue) => fieldValue.type === "STRING")
+                    .map((fieldValue) => (
+                      <Input key={fieldValue.id} />
+                    ))}
+                </Table.Cell>
+                <Table.Cell minW={"150px"}>
+                  {customField
+                    ?.filter((fieldValue) => fieldValue.type === "NUMBER")
+                    .map((fieldValue) => (
+                      <Input key={fieldValue.id} type="number" />
+                    ))}
+                </Table.Cell>
+                <Table.Cell>
+                  {customField
+                    ?.filter((fieldValue) => fieldValue.type === "DATE")
+                    .map((fieldValue) => (
+                      <DatePicker
+                        key={fieldValue.id}
+                        selected={task.updatedAt}
+                      />
+                    ))}
+                </Table.Cell>
+                <Table.Cell>
+                  {customField
+                    ?.filter((fieldValue) => fieldValue.type === "BOOLEAN")
+                    .map((fieldValue) => (
+                      <Checkbox.Root key={fieldValue.id}>
+                        <Checkbox.HiddenInput />
+                        <Checkbox.Control />
+                      </Checkbox.Root>
+                    ))}
+                </Table.Cell>
+                <Table.Cell textAlign={"left"}>
+                  <IconButton
+                    variant={"ghost"}
+                    onClick={() => mutate(task.id)}
+                    isDisabled={loadingId === task.id}
+                  >
+                    {loadingId === task.id ? (
+                      <Spinner size="sm" />
+                    ) : (
+                      <LuTrash />
+                    )}
+                  </IconButton>
+                </Table.Cell>
+                <Table.Cell>
+                  <EditModal task={task} />
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table.Root>
+      </Table.ScrollArea>
     </Stack>
   );
 }
