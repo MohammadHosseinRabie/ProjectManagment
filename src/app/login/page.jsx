@@ -13,8 +13,8 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       const resp = await login(data);
-      if (resp.access_token) {
-        localStorage.setItem("token", resp.access_token);
+      if (resp.token) {
+        localStorage.setItem("token", resp.token);
         router.push("/");
       }
     } catch (err) {
