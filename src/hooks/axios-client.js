@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosClient = axios.create({
-  baseURL: "https://pms2.onfing.ir",
+  baseURL: "https://pms.onfing.ir",
 });
 axiosClient.interceptors.request.use(
   function (config) {
@@ -9,7 +9,7 @@ axiosClient.interceptors.request.use(
 
 
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `${token}`;
 
       if (window.location.pathname === "/login") {
         window.location.href = "/";
