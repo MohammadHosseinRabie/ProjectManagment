@@ -75,11 +75,11 @@ export default function ProjectTasks() {
               <Table.ColumnHeader>وضعیت</Table.ColumnHeader>
               <Table.ColumnHeader>تاریخ ساخت</Table.ColumnHeader>
               <Table.ColumnHeader>تاریخ آپدیت</Table.ColumnHeader>
-              <Table.ColumnHeader></Table.ColumnHeader>
-              <Table.ColumnHeader></Table.ColumnHeader>
-              <Table.ColumnHeader></Table.ColumnHeader>
-              <Table.ColumnHeader></Table.ColumnHeader>
-              <Table.ColumnHeader>check</Table.ColumnHeader>
+              {customField?.map((field) => (
+                <Table.ColumnHeader key={field.id}>
+                  {field.name}
+                </Table.ColumnHeader>
+              ))}
               <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
               <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
             </Table.Row>
@@ -97,56 +97,52 @@ export default function ProjectTasks() {
                 <Table.Cell>
                   {new Date(task.updatedAt).toLocaleDateString("fa-IR")}
                 </Table.Cell>
-                <Table.Cell minW={"xs"}>
-                  {customField
-                    ?.filter((fieldValue) => fieldValue.type === "SELECT")
-                    .map((fieldValue) => (
-                      <NativeSelect.Root size="sm" key={fieldValue.id}>
-                        <NativeSelect.Field placeholder={fieldValue.value}>
-                          {fieldValue?.options?.map((opt, index) => (
-                            <option value={opt} key={index}>
-                              {opt}
-                            </option>
-                          ))}
-                        </NativeSelect.Field>
-                        <NativeSelect.Indicator />
-                      </NativeSelect.Root>
-                    ))}
-                </Table.Cell>
-                <Table.Cell minW={"xs"}>
-                  {customField
-                    ?.filter((fieldValue) => fieldValue.type === "STRING")
-                    .map((fieldValue) => (
-                      <Input key={fieldValue.id} />
-                    ))}
-                </Table.Cell>
-                <Table.Cell minW={"150px"}>
-                  {customField
-                    ?.filter((fieldValue) => fieldValue.type === "NUMBER")
-                    .map((fieldValue) => (
-                      <Input key={fieldValue.id} type="number" />
-                    ))}
-                </Table.Cell>
-                <Table.Cell>
-                  {customField
-                    ?.filter((fieldValue) => fieldValue.type === "DATE")
-                    .map((fieldValue) => (
-                      <DatePicker
-                        key={fieldValue.id}
-                        selected={task.updatedAt}
-                      />
-                    ))}
-                </Table.Cell>
-                <Table.Cell>
-                  {customField
-                    ?.filter((fieldValue) => fieldValue.type === "BOOLEAN")
-                    .map((fieldValue) => (
-                      <Checkbox.Root key={fieldValue.id}>
-                        <Checkbox.HiddenInput />
-                        <Checkbox.Control />
-                      </Checkbox.Root>
-                    ))}
-                </Table.Cell>
+                {customField?.map((field) => {
+                  switch (field.type) {
+                    case "STRING":
+                      return (
+                        <Table.Cell key={field.id}>
+                          <Input />
+                        </Table.Cell>
+                      );
+                    case "NUMBER":
+                      return (
+                        <Table.Cell key={field.id}>
+                          <Input type="number" />
+                        </Table.Cell>
+                      );
+                    case "SELECT":
+                      return (
+                        <Table.Cell key={field.id}>
+                          <NativeSelect.Root size="sm" mb={2}>
+                            <NativeSelect.Field defaultValue={field.value}>
+                              {field.options?.map((opt, index) => (
+                                <option key={index} value={opt}>
+                                  {opt}
+                                </option>
+                              ))}
+                            </NativeSelect.Field>
+                            <NativeSelect.Indicator />
+                          </NativeSelect.Root>
+                        </Table.Cell>
+                      );
+                    case "DATE":
+                      return (
+                        <Table.Cell key={field.id}>
+                          <DatePicker selected={task.updatedAt} />
+                        </Table.Cell>
+                      );
+                    case "BOOLEAN":
+                      return (
+                        <Table.Cell key={field.id}>
+                          <Checkbox.Root>
+                            <Checkbox.HiddenInput />
+                            <Checkbox.Control />
+                          </Checkbox.Root>
+                        </Table.Cell>
+                      );
+                  }
+                })}
                 <Table.Cell textAlign={"left"}>
                   <IconButton
                     variant={"ghost"}
