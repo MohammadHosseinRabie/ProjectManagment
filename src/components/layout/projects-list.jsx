@@ -20,7 +20,7 @@ export const ProjectsList = () => {
 
   return (
     <Stack w={"full"}>
-      {data?.data?.map((project) => (
+      {data?.map((project) => (
         <Button
           asChild
           size={"2xl"}
