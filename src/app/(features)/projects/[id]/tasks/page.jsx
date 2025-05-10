@@ -23,6 +23,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { LuTrash } from "react-icons/lu";
 import "react-datepicker/dist/react-datepicker.css";
+import { CiCalendarDate } from "react-icons/ci";
 
 export default function ProjectTasks() {
   const params = useParams();
@@ -31,6 +32,7 @@ export default function ProjectTasks() {
   const { data, isLoading, isError } = useGetTasks(projectId);
   const { data: customField, isLoading: isLoadingGetCustomField } =
     useGetCustomField(projectId);
+  const [showCalendar, setShowCalendar] = useState(false);
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: deleteTask,
@@ -58,7 +60,7 @@ export default function ProjectTasks() {
   }
 
   return (
-    <Stack dir="rtl" p={"12"}>
+    <Stack dir="rtl" p={"12"} position={"relative"}>
       <HStack justifyContent={"space-between"} w={"full"}>
         <Text textStyle={"4xl"}>تسک های پروژه</Text>
         <Box>
@@ -129,12 +131,46 @@ export default function ProjectTasks() {
                     case "DATE":
                       return (
                         <Table.Cell key={field.id}>
-                          <DatePicker selected={task.updatedAt} />
+                          <Text
+                            display="flex"
+                            justifyContent="center"
+                            alignItems="center"
+                          >
+                            {new Date(field.updatedAt).toLocaleDateString(
+                              "fa-IR"
+                            )}
+
+                            <IconButton
+                              variant="ghost"
+                              justifyContent="center"
+                              alignItems="center"
+                              onClick={() => setShowCalendar((prev) => !prev)}
+                              ml={2}
+                            >
+                              <CiCalendarDate size={25} />
+                            </IconButton>
+
+                            {showCalendar && (
+                              <Box
+                                style={{
+                                  position: "absolute",
+                                  top: "0",
+                                  zIndex: 9999,
+                                }}
+                              >
+                                <DatePicker
+                                  selected={field.updatedAt}
+                                  inline
+                                  onClickOutside={() => setShowCalendar(false)}
+                                />
+                              </Box>
+                            )}
+                          </Text>
                         </Table.Cell>
                       );
                     case "BOOLEAN":
                       return (
-                        <Table.Cell key={field.id}>
+                        <Table.Cell key={field.id} textAlign={"center"}>
                           <Checkbox.Root>
                             <Checkbox.HiddenInput />
                             <Checkbox.Control />
