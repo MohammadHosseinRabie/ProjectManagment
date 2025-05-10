@@ -74,7 +74,7 @@ const Projects = () => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {data?.data?.map((project, index) => (
+              {data?.map((project, index) => (
                 <Table.Row key={project.id}>
                   <Table.Cell>{(page - 1) * perPage + index + 1}</Table.Cell>
                   <Table.Cell>{project.name}</Table.Cell>
