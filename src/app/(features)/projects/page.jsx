@@ -20,6 +20,7 @@ import { parseAsInteger, useQueryState } from "nuqs";
 import React, { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { LuTrash } from "react-icons/lu";
+import ReactMarkdown from "react-markdown";
 
 const Projects = () => {
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
@@ -40,7 +41,12 @@ const Projects = () => {
   });
 
   if (isLoading) {
-    return <Box p={"20"}><Spinner size={"md"}/>در حال بارگذاری...</Box> ;
+    return (
+      <Box p={"20"}>
+        <Spinner size={"md"} />
+        در حال بارگذاری...
+      </Box>
+    );
   }
 
   if (isError) {
@@ -78,9 +84,17 @@ const Projects = () => {
                 <Table.Row key={project.id}>
                   <Table.Cell>{(page - 1) * perPage + index + 1}</Table.Cell>
                   <Table.Cell>{project.name}</Table.Cell>
-                  <Table.Cell>{project.description}</Table.Cell>
-                  <Table.Cell>{new Date(project.createdAt).toLocaleDateString("fa-IR")}</Table.Cell>
-                  <Table.Cell>{new Date(project.updatedAt).toLocaleDateString("fa-IR")}</Table.Cell>
+                  <Table.Cell>
+                    <Box maxW="250px" whiteSpace="pre-wrap">
+                      <ReactMarkdown>{project.description}</ReactMarkdown>
+                    </Box>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {new Date(project.createdAt).toLocaleDateString("fa-IR")}
+                  </Table.Cell>
+                  <Table.Cell>
+                    {new Date(project.updatedAt).toLocaleDateString("fa-IR")}
+                  </Table.Cell>
                   <Table.Cell textAlign={"left"}>
                     <IconButton
                       variant={"ghost"}

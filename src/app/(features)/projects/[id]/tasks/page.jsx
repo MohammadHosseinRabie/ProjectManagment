@@ -24,6 +24,8 @@ import DatePicker from "react-datepicker";
 import { LuTrash } from "react-icons/lu";
 import "react-datepicker/dist/react-datepicker.css";
 import { CiCalendarDate } from "react-icons/ci";
+import ReactMarkdown from "react-markdown";
+
 
 export default function ProjectTasks() {
   const params = useParams();
@@ -91,7 +93,11 @@ export default function ProjectTasks() {
               <Table.Row key={task.id}>
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{task.title}</Table.Cell>
-                <Table.Cell>{task.description}</Table.Cell>
+                <Table.Cell>
+                  <Box maxW="250px" whiteSpace="pre-wrap">
+                    <ReactMarkdown>{task.description}</ReactMarkdown>
+                  </Box>
+                </Table.Cell>
                 <Table.Cell>{task.status}</Table.Cell>
                 <Table.Cell>
                   {new Date(task.createdAt).toLocaleDateString("fa-IR")}
