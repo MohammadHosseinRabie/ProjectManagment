@@ -7,6 +7,7 @@ import useGetCustomField from "@/hooks/use-get-custom-field";
 import useGetTasks from "@/hooks/use-get-tasks";
 import {
   Box,
+  Button,
   Checkbox,
   HStack,
   IconButton,
@@ -25,6 +26,7 @@ import { LuTrash } from "react-icons/lu";
 import "react-datepicker/dist/react-datepicker.css";
 import { CiCalendarDate } from "react-icons/ci";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 
 export default function ProjectTasks() {
@@ -66,6 +68,9 @@ export default function ProjectTasks() {
       <HStack justifyContent={"space-between"} w={"full"}>
         <Text textStyle={"4xl"}>تسک های پروژه</Text>
         <Box>
+          <Button variant={"outline"} ml={"2"}>
+            <Link href={`/projects/${projectId}/fields`}>ویرایش فیلد ها</Link>
+          </Button>
           <AddTaskModal />
         </Box>
       </HStack>
