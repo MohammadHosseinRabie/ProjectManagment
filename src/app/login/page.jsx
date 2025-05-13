@@ -15,8 +15,8 @@ export default function Login() {
       const resp = await login(data);
       if (resp.token) {
         localStorage.setItem("token", resp.token);
-        document.cookie = `token=${resp.token}; path=/; max-age=3600`;
-        router.push("/");
+        document.cookie = `token=${resp.token}; path=/projects; max-age=3600`;
+        router.push("/projects");
       }
     } catch (err) {
       console.error("Login failed", err);
