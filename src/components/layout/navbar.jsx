@@ -17,7 +17,7 @@ export const Navbar = () => {
   }
 
   return (
-    <HStack dir="ltr" pl={"12"} pt={"5"} h={"20"} w={"full"}>
+    <HStack dir="ltr" pl={"12"} px={"5"} h={"20"} w={"full"} bgColor={"whiteAlpha.100"}>
       <Menu.Root>
         <Menu.Trigger asChild cursor={"pointer"}>
           <Button size="sm" unstyled>

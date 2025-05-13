@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export const Sidebar = () => {
   const pathname = usePathname();
   return (
-    <VStack h="lvw" w="80" height={"svh"} pt={"8"}>
+    <VStack h="lvw" w="80" height={"svh"} p={"8"} bgColor={"whiteAlpha.100"} roundedLeft={"2xl"}>
       <Button
         size={"2xl"}
         w={"full"}

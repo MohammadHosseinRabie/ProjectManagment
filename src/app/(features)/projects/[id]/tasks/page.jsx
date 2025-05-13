@@ -50,9 +50,8 @@ export default function ProjectTasks() {
   });
   if (isLoading & isLoadingGetCustomField) {
     return (
-      <Box>
-        <Spinner size={"md"} />
-        در حال بارگذاری...
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <Spinner size={"lg"} />
       </Box>
     );
   }
