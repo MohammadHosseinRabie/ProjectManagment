@@ -15,6 +15,7 @@ export default function Login() {
       const resp = await login(data);
       if (resp.token) {
         localStorage.setItem("token", resp.token);
+        document.cookie = `token=${resp.token}; path=/; max-age=3600`;
         router.push("/");
       }
     } catch (err) {
