@@ -20,19 +20,24 @@ export const ProjectsList = () => {
 
   return (
     <Stack w={"full"}>
-      {data?.map((project) => (
-        <Button
+      {data?.map((project) => {
+        const isActive = pathname.startsWith(`/projects/${project.id}/`);
+        return (
+          <Button
           asChild
           size={"2xl"}
           w={"full"}
           colorPalette={"cyan"}
           rounded={"full"}
           key={project.id}
-          variant={pathname === `/projects/${project.id}/tasks` ? 'subtle' : 'outline'}
+          variant={isActive ? 'subtle' : 'outline'}
         >
           <Link href={`/projects/${project.id}/tasks`}>{project.name}</Link>
         </Button>
-      ))}
+        )
+      }
+        
+      )}
     </Stack>
   );
 };
