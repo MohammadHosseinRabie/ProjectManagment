@@ -1,5 +1,5 @@
 import useAddField from "@/hooks/use-add-field";
-import { Button, Field, Input, Popover, Portal, Stack } from "@chakra-ui/react";
+import { Button, Field, Input, NativeSelect, Popover, Portal, Stack } from "@chakra-ui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,12 @@ export const AddField = () => {
   const projectId = params.id;
   const queryClient = useQueryClient();
   const addField = useAddField();
-  const { register, handleSubmit, reset, formState: { isSubmitting }, } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm();
   const onSubmit = async (data) => {
     if (!data.name.trim() || !data.type.trim()) return;
 
@@ -44,7 +49,16 @@ export const AddField = () => {
                   </Field.Root>
                   <Field.Root>
                     <Field.Label>Type</Field.Label>
-                    <Input placeholder="Type" {...register("type")} />
+                    <NativeSelect.Root>
+                      <NativeSelect.Field {...register("type")}>
+                        <option value="SELECT">select</option>
+                        <option value="STRING">string</option>
+                        <option value="NUMBER">number</option>
+                        <option value="DATE">date</option>
+                        <option value="BOOLEAN">boolean</option>
+                      </NativeSelect.Field>
+                      <NativeSelect.Indicator />
+                    </NativeSelect.Root>
                   </Field.Root>
                   <Field.Root>
                     <Button
