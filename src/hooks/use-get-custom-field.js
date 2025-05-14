@@ -10,7 +10,7 @@ const fetchCustomField = async (projectId) => {
 
 const useGetCustomField = (projectId) => {
   return useQuery({
-    queryKey: ["projects", projectId],
+    queryKey: ["fields", projectId],
     queryFn: () => fetchCustomField(projectId),
   });
 };
