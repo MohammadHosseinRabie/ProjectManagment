@@ -20,7 +20,7 @@ export const ProjectsList = () => {
 
   return (
     <Stack w={"full"}>
-      {data?.map((project) => {
+      {data?.data.map((project) => {
         const isActive = pathname.startsWith(`/projects/${project.id}/`);
         return (
           <Button
