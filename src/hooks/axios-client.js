@@ -10,7 +10,7 @@ axiosClient.interceptors.request.use(
 
 
     if (token) {
-      config.headers.Authorization = `${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
 
       if (window.location.pathname === "/login") {
         window.location.href = "/";
