@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { axiosClient } from "./axios-client";
 
 const addField = async ({ name, type, projectId }) => {
-  const response = await axiosClient.post("/custom-fields", {
+  const response = await axiosClient.post(`/projects/${projectId}/custom-fields`, {
     name,
     type,
     projectId,
