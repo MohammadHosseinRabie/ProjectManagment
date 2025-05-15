@@ -2,25 +2,22 @@
 
 import { AddField } from "@/components/ui/add-field";
 import useGetCustomField from "@/hooks/use-get-custom-field";
-import useProjects from "@/hooks/use-projects";
 import {
   Box,
   Button,
-  Field,
   Flex,
-  Input,
   Spinner,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export default function layout({children}) {
-  const { data, isLoading, isError } = useGetCustomField();
   const params = useParams();
   const projectId = params.id
+  const { data, isLoading, isError } = useGetCustomField(projectId);
 
   if (isLoading) {
     return (
