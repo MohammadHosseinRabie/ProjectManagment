@@ -15,9 +15,9 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 
 export default function layout({children}) {
+  const { data, isLoading, isError } = useGetCustomField();
   const params = useParams();
   const projectId = params.id
-  const { data, isLoading, isError } = useGetCustomField(projectId);
 
   if (isLoading) {
     return (
