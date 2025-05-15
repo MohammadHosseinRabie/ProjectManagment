@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Spinner, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 
 export default function Fields() {
 
