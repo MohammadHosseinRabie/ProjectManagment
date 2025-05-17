@@ -118,6 +118,9 @@ export default function Fields() {
         <Field.Label>field type</Field.Label>
         <Input value={data.type} readOnly disabled />
       </Field.Root>
+      {data?.type === "SELECT" ? (
+        <Button>add option</Button>
+      ) : ("")}
       {data?.type === "SELECT" && data?.options && data?.options.length > 0 ? (
         <Field.Root>
           <Field.Label>field options</Field.Label>
