@@ -6,7 +6,6 @@ import { Navbar } from "@/components/layout/navbar";
 import Profile from "./(features)/profile/page";
 
 export default function Home() {
-
   return (
     <Flex direction="row" w="full" h="full">
       <Sidebar />

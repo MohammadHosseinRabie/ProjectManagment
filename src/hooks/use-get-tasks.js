@@ -2,9 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosClient } from "./axios-client";
 
 const fetchTasks = async (projectId) => {
-  const { data } = await axiosClient.get(
-    `/projects/${projectId}/tasks`
-  );
+  const { data } = await axiosClient.get(`/projects/${projectId}/tasks`);
   return data;
 };
 

@@ -5,9 +5,9 @@ const addTaskToProject = async ({ title, description, projectId }) => {
   const response = await axiosClient.post(`/tasks`, {
     title,
     description,
-    projectId
+    projectId,
   });
-  console.log(response)
+  console.log(response);
   return response.data;
 };
 
