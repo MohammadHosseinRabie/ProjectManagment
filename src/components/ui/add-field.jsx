@@ -1,21 +1,33 @@
 import useAddField from "@/hooks/use-add-field";
-import { Button, Field, Input, NativeSelect, Popover, Portal, Stack } from "@chakra-ui/react";
+import {
+  Button,
+  Field,
+  Input,
+  NativeSelect,
+  Popover,
+  Portal,
+  Stack,
+} from "@chakra-ui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { CiCirclePlus } from "react-icons/ci";
+import { useState } from "react";
 
 export const AddField = () => {
   const params = useParams();
   const projectId = params.id;
   const queryClient = useQueryClient();
   const addField = useAddField();
+  const [isOpen, setIsOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { isSubmitting },
   } = useForm();
+
   const onSubmit = async (data) => {
     if (!data.name.trim() || !data.type.trim()) return;
 
@@ -24,14 +36,16 @@ export const AddField = () => {
       type: data.type,
       projectId,
     });
+
     queryClient.invalidateQueries(["custom-fields", projectId]);
     reset();
+    setIsOpen(false);
   };
 
   return (
-    <Popover.Root>
+    <Popover.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
       <Popover.Trigger asChild>
-        <Button size="xs" variant="outline">
+        <Button size="xs" variant="outline" onClick={() => setIsOpen(true)}>
           اضافه کردن
           <CiCirclePlus />
         </Button>
@@ -39,7 +53,7 @@ export const AddField = () => {
       <Portal>
         <Popover.Positioner>
           <Popover.Content>
-            <form action="" onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Popover.Arrow />
               <Popover.Body>
                 <Stack gap="4">
@@ -71,7 +85,6 @@ export const AddField = () => {
                   </Field.Root>
                 </Stack>
               </Popover.Body>
-              <Popover.CloseTrigger />
             </form>
           </Popover.Content>
         </Popover.Positioner>
