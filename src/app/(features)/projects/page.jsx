@@ -1,7 +1,7 @@
 "use client";
 
-import { AddModal } from "@/components/ui/add-modal";
-import { EditModal } from "@/components/ui/edit-modal";
+import { AddModal } from "@/components/modal/add-modal";
+import { EditModal } from "@/components/modal/edit-modal";
 import deletProject from "@/hooks/use-delet-project";
 import useProjects from "@/hooks/use-projects";
 import {

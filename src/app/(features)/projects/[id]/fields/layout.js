@@ -1,6 +1,6 @@
 "use client";
 
-import { AddField } from "@/components/ui/add-field";
+import { AddField } from "@/components/modal/add-field";
 import useGetCustomField from "@/hooks/use-get-custom-field";
 import {
   Box,

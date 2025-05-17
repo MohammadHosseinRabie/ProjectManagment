@@ -1,7 +1,7 @@
 "use client";
 
-import { AddTaskModal } from "@/components/ui/add-task";
-import { EditModal } from "@/components/ui/edit-modal";
+import { AddTaskModal } from "@/components/modal/add-task";
+import { EditModal } from "@/components/modal/edit-modal";
 import deleteTask from "@/hooks/use-delete-task";
 import useGetCustomField from "@/hooks/use-get-custom-field";
 import useGetTasks from "@/hooks/use-get-tasks";
