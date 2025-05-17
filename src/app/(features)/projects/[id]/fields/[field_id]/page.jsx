@@ -16,6 +16,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import { CiTrash } from "react-icons/ci";
+import { AddOption } from "@/components/modal/add-option";
 
 export default function Fields() {
   const params = useParams();
@@ -119,7 +120,7 @@ export default function Fields() {
         <Input value={data.type} readOnly disabled />
       </Field.Root>
       {data?.type === "SELECT" ? (
-        <Button>add option</Button>
+        <AddOption />
       ) : ("")}
       {data?.type === "SELECT" && data?.options && data?.options.length > 0 ? (
         <Field.Root>
