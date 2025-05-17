@@ -43,7 +43,8 @@ export default function Fields() {
   });
 
   const editMutation = useMutation({
-    mutationFn: ({ fieldId, projectId, name }) => putEditField({ fieldId, projectId, name }),
+    mutationFn: ({ fieldId, projectId, name }) =>
+      putEditField({ fieldId, projectId, name }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["fields"] });
       setEditMode(false);
@@ -75,17 +76,39 @@ export default function Fields() {
               autoFocus
             />
             <Stack display={"flex"}>
-            <Button size="sm" variant={"surface"} mt={2} onClick={() => editMutation.mutate({ fieldId, projectId, name: fieldName })}>
-              ذخیره
-            </Button>
-            <Button size="sm" variant={"surface"} mt={2} mr={2} onClick={() => { setEditMode(false); setFieldName(data.name); }}>
-              لغو
-            </Button></Stack>
+              <Button
+                size="sm"
+                variant={"surface"}
+                mt={2}
+                onClick={() =>
+                  editMutation.mutate({ fieldId, projectId, name: fieldName })
+                }
+              >
+                ذخیره
+              </Button>
+              <Button
+                size="sm"
+                variant={"surface"}
+                mt={2}
+                mr={2}
+                onClick={() => {
+                  setEditMode(false);
+                  setFieldName(data.name);
+                }}
+              >
+                لغو
+              </Button>
+            </Stack>
           </>
         ) : (
           <>
             <Input value={data.name} readOnly />
-            <Button size="sm" mt={2} variant={"surface"} onClick={() => setEditMode(true)}>
+            <Button
+              size="sm"
+              mt={2}
+              variant={"surface"}
+              onClick={() => setEditMode(true)}
+            >
               ویرایش
             </Button>
           </>
