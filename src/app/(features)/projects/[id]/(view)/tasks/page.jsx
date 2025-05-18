@@ -88,8 +88,7 @@ export default function ProjectTasks() {
                   {field.name}
                 </Table.ColumnHeader>
               ))}
-              <Table.ColumnHeader textAlign={"left"}>حذف</Table.ColumnHeader>
-              <Table.ColumnHeader>ویرایش</Table.ColumnHeader>
+              <Table.ColumnHeader textAlign={"center"}>action</Table.ColumnHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -187,6 +186,21 @@ export default function ProjectTasks() {
                           </Checkbox.Root>
                         </Table.Cell>
                       );
+                    case "DYNAMIC_SELECT":
+                      return (
+                        <Table.Cell key={field.id}>
+                          <NativeSelect.Root size="sm" mb={2}>
+                            <NativeSelect.Field defaultValue={field.value}>
+                              {field.options?.map((opt, index) => (
+                                <option key={index} value={opt}>
+                                  {opt}
+                                </option>
+                              ))}
+                            </NativeSelect.Field>
+                            <NativeSelect.Indicator />
+                          </NativeSelect.Root>
+                        </Table.Cell>
+                      )
                   }
                 })}
                 <Table.Cell textAlign={"left"}>
@@ -201,8 +215,6 @@ export default function ProjectTasks() {
                       <LuTrash />
                     )}
                   </IconButton>
-                </Table.Cell>
-                <Table.Cell>
                   <EditModal task={task} />
                 </Table.Cell>
               </Table.Row>
