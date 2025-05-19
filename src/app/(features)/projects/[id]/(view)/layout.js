@@ -14,7 +14,7 @@ export default function Layout({ children }) {
         </Button>
       </Tabs.List>
       <Tabs.Content value="Table" dir="rtl">
-        <ProjectTasks />
+        {children}
       </Tabs.Content>
       <Tabs.Content value="kanban" dir="rtl">
         <KanbanBoard />
